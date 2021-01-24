@@ -1,0 +1,22 @@
+{
+  "name": "automuser",
+  "version": "1.0.0",
+  "description": "A web application to create algorithmic music",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sta14031/automuser.git"
+  },
+  "author": "Tyler Starr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sta14031/automuser/issues"
+  },
+  "homepage": "https://github.com/sta14031/automuser#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
