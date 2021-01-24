@@ -1,0 +1,30 @@
+body {
+    background-color: #7c7c88;
+    font-family: 'Garamond', 'Arial Narrow', Arial, sans-serif
+}
+
+div#title {
+    border: 5px outset white;
+    background-color: #1b193c;
+    color: white;
+
+    padding: 10px;
+    padding-left: 40px;
+    margin: 10px;
+
+    text-align: center;
+    font-size: 48px;
+}
+
+div#app {
+    width: 1300px;
+    max-width: 1300px;
+    height: 500px;
+    margin: auto;
+
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+
+    text-align: center;
+}
