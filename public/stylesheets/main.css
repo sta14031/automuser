@@ -16,6 +16,28 @@ div#title {
     font-size: 48px;
 }
 
+div#header {
+    background-color: #222;
+    margin-bottom: 20px;
+}
+
+div#header nav {
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+div#header nav a {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+}
+div#header nav a:hover {
+    background-color: #888;
+}
+
 div#app {
     width: 1300px;
     max-width: 1300px;
