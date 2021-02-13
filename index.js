@@ -12,4 +12,11 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.get('/', (req, res) => res.render('pages/index'))
 app.get('/about', (req, res) => res.render('pages/about'))
+app.get('/song', (req, res) => {
+    let seed = req.query.seed
+
+    console.log("Seed: ", seed)
+
+    res.render('pages/view_song')
+})
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
