@@ -15,8 +15,24 @@ app.get('/about', (req, res) => res.render('pages/about'))
 app.get('/song', (req, res) => {
     let seed = req.query.seed
 
-    console.log("Seed: ", seed)
-
     res.render('pages/view_song')
 })
+
+function sendToPython() {
+  var python = require('child_process').spawn('python', ['./src/main.py', input.value]);
+  python.stdout.on('data', function (data) {
+    console.log("Python response: ", data.toString('utf8'));
+    result.textContent = data.toString('utf8');
+  });
+
+  python.stderr.on('data', (data) => {
+    console.error(`stderr: ${data}`);
+  });
+
+  python.on('close', (code) => {
+    console.log(`child process exited with code ${code}`);
+  });
+
+}
+
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
