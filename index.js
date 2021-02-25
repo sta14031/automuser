@@ -13,9 +13,9 @@ app.set('view engine', 'ejs')
 app.get('/', (req, res) => res.render('pages/index'))
 app.get('/about', (req, res) => res.render('pages/about'))
 app.get('/song', (req, res) => {
-    let seed = req.query.seed
-
-    res.render('pages/view_song')
+    res.render('pages/view_song', {
+      seed : req.query.seed
+    })
 })
 
 function sendToPython() {
