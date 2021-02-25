@@ -1,3 +1,3 @@
-from random_progression import *
+from random_melody import *
 
-make_progression_part()
+make_melody_part(1)
