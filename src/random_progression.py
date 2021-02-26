@@ -42,5 +42,5 @@ def make_progression_part():
 
         freq = [f if f > 0 else 0 for f in freq] # can't have negative frequencies
 
-    print(notes)
+    #print(notes)
     return notes

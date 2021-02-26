@@ -44,5 +44,5 @@ def make_melody_part(key):
 
         freq = [f if f > 0 else 0 for f in freq] # can't have negative frequencies
 
-    print([n - 8 if n > 8 else n for n in [abs(math.floor(n - 1)) for n in notes]])
-    return notes
+    adjusted_notes = [n - 7 if n >= 7 else n for n in [abs(math.floor(n)) for n in notes]]
+    return adjusted_notes
