@@ -4,13 +4,14 @@ from musical.audio import playback
 from timeline import Hit, Timeline
 
 from itertools import zip_longest
+from random import uniform
 
 from random_progression import *
 from random_melody import *
 
 # Define key and scale
 key = Note('A3')
-scale = Scale(key, 'minor')
+scale = Scale(key, uniform(0, 1) > 0.5 and 'major' or 'minor')
 
 # Grab key_chords chords from scale starting at the octave of our key
 key_chords = Chord.progression(scale, base_octave=key.octave)
