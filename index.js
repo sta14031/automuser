@@ -14,7 +14,7 @@ app.get('/', (req, res) => res.render('pages/index'))
 app.get('/about', (req, res) => res.render('pages/about'))
 app.get('/song', (req, res) => {
     res.render('pages/view_song', {
-      seed : req.query.seed
+      seed : req.query.seed.replace(/\W/g, '')
     })
 })
 
