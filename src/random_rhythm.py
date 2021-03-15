@@ -2,25 +2,23 @@ from random import uniform
 
 # a very complicated thing that does cool music
 freq_adjust_matrix = [
-    [ 0,  3,  1,  5, -1, -1, -1],
-    [-2,  0,  3,  6,  0, -3,  0],
-    [ 2, -1,  0,  4, -1,  6,  1],
-    [ 2,  3, -1,  0, 10,  2,  0],
-    [ 4,  1,  2,  2,  0,  2,  3],
-    [-3,  3,  4,  8,  1,  0,  5],
-    [-1, -2,  3,  0,  3,  1,  0]
+#    2.0 1.5 1.0 0.5 0.25
+   [-9, -9,  2,  3,  0],
+    [0, -9, -3,  6,  0],
+    [1,  3,  1,  4,  1],
+    [2,  1,  2,  4,  4],
+    [1,  0,  2,  4,  9],
 ]
 
-def make_progression_part():
-    # A progression consists of between 4 and 8 chords.
-    # We tend to resolve on tonic.
+def make_rhythm_part():
+    # A rhythm is a series of time delays applied to the melody.
 
-    notes = [] # The sequence of notes so far
+    delays = [] # The sequence of delays so far
 
-    # Relative note frequencies
-    freq = [8, 0, 0, 0, 0, 2, 0]
+    # Relative time delay frequencies
+    freq = [1, 0, 3, 2, 0]
     while (True):
-        # Select a new chord.
+        # Select a new delay.
         target = uniform(0, sum(freq))
         i = -1
         v = 0
@@ -29,11 +27,12 @@ def make_progression_part():
             v += freq[i]
 
         # Now our new chord index (i) has been selected
-        notes.append(i)
+        delays.append(i)
+        print("Appended " + str(i))
         freq[i] = 0 # can't have the same chord twice
 
-        #if i == 4 and uniform(0, 1) > 0.5:
-        if len(notes) == 4:
+        if i == 4 and uniform(0, 1) > 0.5:
+        #if sum(delays) == 4:
             # End the progression here
             # notes.append(0)
             break
@@ -44,4 +43,4 @@ def make_progression_part():
         freq = [f if f > 0 else 0 for f in freq] # can't have negative frequencies
 
     #print(notes)
-    return notes
+    return delays

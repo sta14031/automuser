@@ -1,3 +1,3 @@
-from random_melody import *
+from random_rhythm import *
 
-make_melody_part(1)
+make_rhythm_part()

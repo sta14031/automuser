@@ -11,7 +11,7 @@ freq_adjust_matrix = [
 
 conversions= [1, 2, 4]
 
-def make_melody_part(key):
+def make_melody_part(key, num_notes):
     # Melodies can go up by 2nds, 3rds, or 5ths.
     # We tend to resolve on tonic.
 
@@ -34,7 +34,8 @@ def make_melody_part(key):
             * (uniform(0, 1) > 0.5 and 1 or -1))
         freq[i] = 0 # can't have the same note twice TODO: can we?
 
-        if i == 0 and len(notes) >= 4 and uniform(0, 1) > 0.5: #TODO: uniform -> random_int
+        #if i == 0 and len(notes) >= 4 and uniform(0, 1) > 0.5: #TODO: uniform -> random_int
+        if len(notes) == num_notes:
             # End the progression here
             # notes.append(0)
             break
