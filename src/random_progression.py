@@ -45,3 +45,6 @@ def make_progression_part():
 
     #print(notes)
     return notes
+
+def make_progression_ending():
+    return [3, 4, 0]

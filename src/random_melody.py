@@ -11,7 +11,7 @@ freq_adjust_matrix = [
 
 conversions= [1, 2, 4]
 
-def make_melody_part(key, num_notes):
+def make_melody_part(num_notes):
     # Melodies can go up by 2nds, 3rds, or 5ths.
     # We tend to resolve on tonic.
 
@@ -45,5 +45,6 @@ def make_melody_part(key, num_notes):
 
         freq = [f if f > 0 else 0 for f in freq] # can't have negative frequencies
 
+    print(notes)
     adjusted_notes = [n - 7 if n >= 7 else n for n in [abs(math.floor(n)) for n in notes]]
     return adjusted_notes
