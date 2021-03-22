@@ -44,7 +44,6 @@ div#header nav a:hover {
 }
 
 div#app {
-    width: 1300px;
     max-width: 1300px;
     height: 500px;
     margin: auto;

@@ -13,13 +13,15 @@ from random_rhythm import *
 from random_melody import *
 
 # Set random seed + filepath from command line
-if len(argv) != 3:
-    print("Usage: main.py [seed] [filepath]")
+if len(argv) < 2:
+    print("Usage: main.py [seed] {filepath}")
     quit()
 
 
 seed(argv[1] or 0)
-filepath = argv[2] or "generated_audio.wav"
+filepath = "song_" + argv[1] + ".wav"
+if len(argv) > 2:
+    filepath = argv[2]
 
 # Define key and scale
 random_note = choice(Note.NOTES)
