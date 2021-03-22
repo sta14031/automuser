@@ -32,12 +32,10 @@ def make_melody_part(num_notes):
         notes.append(((len(notes) == 0) and 1 or notes[-1])
             + (i == 3 and uniform(0, 6) or conversions[i])
             * (uniform(0, 1) > 0.5 and 1 or -1))
-        freq[i] = 0 # can't have the same note twice TODO: can we?
+        freq[i] -= 2 # reduce current note frequencey
 
-        #if i == 0 and len(notes) >= 4 and uniform(0, 1) > 0.5: #TODO: uniform -> random_int
         if len(notes) == num_notes:
             # End the progression here
-            # notes.append(0)
             break
 
         # apply the cool matrix
@@ -45,6 +43,5 @@ def make_melody_part(num_notes):
 
         freq = [f if f > 0 else 0 for f in freq] # can't have negative frequencies
 
-    print(notes)
-    adjusted_notes = [n - 7 if n >= 7 else n for n in [abs(math.floor(n)) for n in notes]]
+    adjusted_notes = [n // 7 if n >= 7 else n for n in [abs(math.floor(n)) for n in notes]]
     return adjusted_notes

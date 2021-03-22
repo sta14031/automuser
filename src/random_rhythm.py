@@ -3,14 +3,14 @@ from random import uniform
 # a very complicated thing that does cool music
 freq_adjust_matrix = [
 #    2.0 1.5 1.0 0.5 0.25
-   [-9, -9,  2,  3,  0],
-    [0, -9, -3,  6,  0],
-    [1,  1,  1,  4,  1],
-    [0,  1,  2,  4,  4],
-    [0,  0,  2,  4,  9],
+   [-9, -9,  2,  2,  0],
+    [0, -9, -3,  2,  0],
+    [4,  1, -9,  4,  1],
+    [0,  1,  2, -1,  4],
+    [0,  0,  2,  4, -1],
 ]
 
-delay_key = [1.0, 1.0, 0.5, 0.5, 0.25]
+delay_key = [2.0, 1.5, 1.0, 0.5, 0.25]
 
 def make_rhythm_part():
     # A rhythm is a series of time delays applied to the melody.
@@ -29,15 +29,14 @@ def make_rhythm_part():
             i += 1
             v += freq[i]
 
-        # Now our new chord index (i) has been selected
+        # Now our new rhythm index (i) has been selected
         delays.append(i)
 
-        freq[i] = 0 # can't have the same delay twice TODO: can we?
+        freq[i] -= 3 # reduce current rhythm frequency
 
         #if i == 4 and uniform(0, 1) > 0.5:
         if sum([delay_key[j] for j in delays]) >= 4.0:
-            # End the progression here
-            # notes.append(0)
+            # End the rhythm here
             final_delays = [delay_key[j] for j in delays]
             while sum(final_delays) > 4.0:
                 final_delays[-1] -= 0.25
