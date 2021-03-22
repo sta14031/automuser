@@ -29,7 +29,7 @@ div#header nav {
     justify-content: space-evenly;
 }
 @media only screen and (max-width: 600px) {
-    header nav {flex-direction: column}
+    div#header nav {flex-direction: column}
 }
 
 div#header nav a {
