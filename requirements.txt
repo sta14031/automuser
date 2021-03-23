@@ -1,1 +1,1 @@
-python-musical
+musical==0.3.0
