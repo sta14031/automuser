@@ -2,15 +2,15 @@ from random import uniform
 
 # a very complicated thing that does cool music
 freq_adjust_matrix = [
-#    2.0 1.5 1.0 0.5 0.25
-   [-9, -9,  2,  2,  0],
+#   1.0 .75 0.5 .25 .125
+   [-2, -9,  2, -9,  0],
     [0, -9, -3,  2,  0],
     [4,  1, -9,  4,  1],
     [0,  1,  2, -1,  4],
     [0,  0,  2,  4, -1],
 ]
 
-delay_key = [2.0, 1.5, 1.0, 0.5, 0.25]
+delay_key = [1.0, 0.75, 0.5, 0.25, 0.125]
 
 def make_rhythm_part():
     # A rhythm is a series of time delays applied to the melody.

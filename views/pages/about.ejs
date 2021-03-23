@@ -9,20 +9,45 @@
 
 <div id="title">
 <img src="https://1.bp.blogspot.com/-aHOisZDgTsY/U9j7hdY41qI/AAAAAAACTkQ/nzG3yQgc0R8/s1600/3w382233.png" width="60px" height="60px"/>
-About Me!
+About AutoMuser
 <img src="https://1.bp.blogspot.com/-aHOisZDgTsY/U9j7hdY41qI/AAAAAAACTkQ/nzG3yQgc0R8/s1600/3w382233.png" width="60px" height="60px"/>
 </div>
 
 <%- include('../partials/header.ejs') %>
 
-<div>
+<div class="text">
     <p>My name is Tyler Starr &ndash; welcome to my project!
-
     </p>
+
     <p>AutoMuser is my senior project for my
-        bachelor&apos;s degree at BYU-Idaho.
+        bachelor&apos;s degree at
+        <a href="https://byui.edu">BYU-Idaho.</a> The idea was born
+        when I thought about two of my interests: coding and
+        music. So here, we have a computer program that can
+        generate music! The program itself consists of a
+        series of Python scripts, and uses the library
+        <a href="https://github.com/wybiral/python-musical">python-musical</a>
+        to generate sound. All the code for this project is
+        <a href="https://github.com/sta14031/automuser">open source</a>.
     </p>
 </div>
+
+<div class="text">
+    <p>One way we might generate music dynamically is by using
+        machine learning. This technique allows a program to study
+        examples of existing music and learn to mimic them, thus
+        producing original music after (hopefully) learning how
+        music works from some existing examples.
+        <a href="https://www.youtube.com/watch?v=SacogDL_4JU">
+        &quot;Computer evolves to generate baroque music!&quot;</a>
+        is a project where music is generated in this way.
+    </p>
+
+    <p>However, one of my goals for this project was to generate
+        music algorithmically. I wanted to have a clear procedure
+        that we can look to and understand what makes music sound
+        the way that it does. <a href="https://marasmusine.itch.io/duncs-algomusic">
+        Dunc&apos;s Algomusic</a> is one project that does just that.
 
 </body>
 </html>

@@ -58,3 +58,15 @@ div#app {
 div#app a {
     color:white;
 }
+
+div.text {
+    border: black 1px solid;
+    padding: 20px;
+    max-width: 70%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+div.text a {
+    color:black;
+}
