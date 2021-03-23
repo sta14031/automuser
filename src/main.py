@@ -13,21 +13,20 @@ from random_rhythm import *
 from random_melody import *
 
 # Set random seed + filepath from command line
-if len(argv) < 2:
-    print("Usage: main.py [seed] {filepath}")
-    quit()
+random_seed = 0
+if len(argv) >= 2:
+    random_seed = argv[1]
+seed(random_seed)
 
-
-seed(argv[1] or 0)
-filepath = "song_" + argv[1] + ".wav"
+filepath = "/tmp/generated_song_" + random_seed + ".wav"
 if len(argv) > 2:
     filepath = argv[2]
 
 # Define key and scale
 random_note = choice(Note.NOTES)
 key = Note(random_note + '3')
-scale = Scale(key, choice([l for l in list(NAMED_SCALES.values()) if len(l) == 7]))
-# scale = Scale(key, uniform(0, 1) > 0.5 and 'major' or 'minor')
+#scale = Scale(key, choice([l for l in list(NAMED_SCALES.values()) if len(l) == 7]))
+scale = Scale(key, uniform(0, 1) > 0.5 and 'major' or 'minor')
 
 # Grab key_chords chords from scale starting at the octave of our key
 key_chords = Chord.progression(scale, base_octave=key.octave)
@@ -95,7 +94,8 @@ data = data * 0.25
 #print("Playing audio...")
 print("Saving audio to " + filepath)
 
-#playback.play(data)
+# Don't have to worry about running out of filespace because Heroku regularly refreshes the filesystem. See https://stackoverflow.com/questions/46282883/what-happens-to-temp-files-in-heroku-node-application
 save.save_wave(data, filepath)
+#playback.play(data)
 
 print("Done!")

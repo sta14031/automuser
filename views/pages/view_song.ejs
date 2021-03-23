@@ -7,8 +7,12 @@
 
 <body>
 <%- include('../partials/header.ejs') %>
-<div>
-    Your generated song from seed <%- seed %> goes here!
+<div id="app">
+    <p>Your song inspired by &apos;<%- seed %>&apos;:</p>
+    <audio controls autoplay>
+        <source src="/tmp/generated_song_<%- seed %>.wav" type="audio/wav" />
+        WARNING: Your browser does not support embedded audio!
+    </audio> <br />
 </div>
 
 </body>
