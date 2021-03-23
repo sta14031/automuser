@@ -13,12 +13,12 @@ from random_rhythm import *
 from random_melody import *
 
 # Set random seed + filepath from command line
-random_seed = 0
+random_seed = "0"
 if len(argv) >= 2:
     random_seed = argv[1]
 seed(random_seed)
 
-filepath = "/tmp/generated_song_" + random_seed + ".wav"
+filepath = "public/generated_songs/song_" + random_seed + ".wav"
 if len(argv) > 2:
     filepath = argv[2]
 

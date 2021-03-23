@@ -21,5 +21,7 @@ app.get('/song', (req, res) => {
     seed : sanitized_seed
   })
 })
+// app.get('/generated_songs', (req, res) => res.send('generated_songs'))
+app.use('/generated_songs', express.static('public/generated_songs'));
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
