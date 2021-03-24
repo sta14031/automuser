@@ -5,7 +5,7 @@ from musical.audio import playback, save
 from timeline import Hit, Timeline
 
 from itertools import zip_longest
-from random import uniform, choice, seed
+from random import uniform, randint, choice, seed
 from sys import argv
 
 from random_progression import *
@@ -56,27 +56,23 @@ def render_progression(progression):
         timeline.add(time + i * 2.0 * rhythm_mod, Hit( root, 2.0 * rhythm_mod))
         timeline.add(time + i * 2.0 * rhythm_mod, Hit(fifth, 2.0 * rhythm_mod))
 
-# Add key_chords to timeline by arpeggiating chords from the key_chords
-# Instead of arpeggiating, just do the base chords
-# progression = make_progression_part()
-# melody = make_melody_part(0)
+# Come up with several progressions, rhythms, and melodies
+progressions = []
+rhythms = []
+melodies = []
 
-# Come up with two progressions and use them smartly, use melodies in conjunction
-progression1 = make_progression_part()
-progression2 = make_progression_part()
-rhythm1 = make_rhythm_part()
-rhythm2 = make_rhythm_part()
-melody1 = make_melody_part(len(rhythm1))
-melody2 = make_melody_part(len(rhythm2))
+complexity = randint(2, 5) # the length of the above arrays
+for _ in range(complexity):
+    progressions.append(make_progression_part())
+    rhythms.append(make_rhythm_part())
+    melodies.append(make_melody_part(len(rhythms[-1])))
 
-render_progression(progression1)
-render_melody(rhythm1, melody1)
-render_progression(progression1)
-render_melody(rhythm1, melody1)
-render_progression(progression2)
-render_melody(rhythm2, melody2)
-render_progression(progression1)
-render_melody(rhythm1, melody1)
+# Render the progressions and melodies in patterns
+song_length = randint(2, 3) * complexity // 2
+for _ in range(song_length):
+    render_progression(choice(progressions))
+    i = randint(0, complexity - 1)
+    render_melody(rhythms[i], melodies[i])
 
 # Strum out root chord to finish
 chord = key_chords[0]

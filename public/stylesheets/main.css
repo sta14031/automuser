@@ -60,6 +60,7 @@ div#app a {
 }
 
 div.text {
+    background-color: #c9c9cf;
     border: black 1px solid;
     padding: 20px;
     max-width: 70%;
