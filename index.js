@@ -15,7 +15,12 @@ app.get('/', (req, res) => res.render('pages/index'))
 app.get('/about', (req, res) => res.render('pages/about'))
 app.get('/song', (req, res) => {
   var sanitized_seed = req.query.seed.replace(/\W/g, '')
-  childProcess.execFileSync('python', ['./src/main.py', sanitized_seed])
+
+  try {
+    childProcess.execFileSync('python', ['./src/main.py', sanitized_seed])
+  } catch (err) {
+    res.render('pages/under_construction')
+  }
 
   res.render('pages/view_song', {
     seed : sanitized_seed
