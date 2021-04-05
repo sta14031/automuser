@@ -9,6 +9,7 @@ from random import uniform, randint, choice, seed
 from sys import argv
 
 from random_progression import *
+from random_voicing import *
 from random_rhythm import *
 from random_melody import *
 
@@ -47,32 +48,37 @@ def render_melody(rhythm, melody):
         timeline.add(time, Hit(note.notes[0], r * 2.0 * rhythm_mod))
         time += (r * 2.0 * rhythm_mod)
 
-def render_progression(progression):
+def render_progression(progression, voicing):
     global time
     for i, p in enumerate(progression):
         chord = key_chords[p]
-        root, third, fifth = chord.notes
+        # root, third, fifth = chord.notes
 
-        timeline.add(time + i * 2.0 * rhythm_mod, Hit( root, 2.0 * rhythm_mod))
-        timeline.add(time + i * 2.0 * rhythm_mod, Hit(fifth, 2.0 * rhythm_mod))
+        timeline.add(time + i * 2.0 * rhythm_mod, Hit(
+            chord.notes[voicing[i][0]], 2.0 * rhythm_mod))
+        timeline.add(time + i * 2.0 * rhythm_mod, Hit(
+            chord.notes[voicing[i][1]], 2.0 * rhythm_mod))
 
 # Come up with several progressions, rhythms, and melodies
 progressions = []
+voicings = []
 rhythms = []
 melodies = []
 
 complexity = randint(2, 5) # the length of the above arrays
 for _ in range(complexity):
     progressions.append(make_progression_part())
+    voicings.append(make_voicing_part(len(progressions[-1])))
     rhythms.append(make_rhythm_part())
     melodies.append(make_melody_part(len(rhythms[-1])))
 
 # Render the progressions and melodies in patterns
 song_length = randint(2, 3) * complexity // 2
 for _ in range(song_length):
-    render_progression(choice(progressions))
     i = randint(0, complexity - 1)
-    render_melody(rhythms[i], melodies[i])
+    render_progression(progressions[i], voicings[i])
+    j = randint(0, complexity - 1)
+    render_melody(rhythms[j], melodies[j])
 
 # Strum out root chord to finish
 chord = key_chords[0]
